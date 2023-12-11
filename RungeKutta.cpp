@@ -2,7 +2,7 @@
 using namespace std;
 
 double f(double x, double y){
-    return (x*x)+(y*y);
+    return (x-y)/2;
 }
 int main(){
     double x0, y0, x, n;

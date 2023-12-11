@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     cout<<"Enter the number of unknowns / Array size: ";
     int n; cin>>n;
-    float a[n][n+1], b[n][n+1], m[n],ans[n];
+    float a[n][n+1], b[n][n+1], m[2][n],ans[n];
 
     cout<<"Enter all equations coefficient: \n";
     for(int i=0; i<n; ++i){
@@ -28,7 +28,10 @@ int main(){
         cout<<endl;
     }
     //initial value of x,y,z
-    for(int i=0; i<n;++i) m[i]=0;
+    for(int i=0; i<n;++i) {
+        m[0][i]=0;
+        m[1][i]=0;
+    }
 
     cout<<"Enter the number of iteration: ";
     int k, it=1; cin>>k;
@@ -36,14 +39,15 @@ int main(){
         cout<<"Iteration "<<it++<<": \n";
         //n-th approximation
         for(int i=0; i<n; ++i){
-            m[i] = b[i][n];
+            m[1][i] = b[i][n];
             for(int j=0; j<n; ++j){
                 if(i==j) continue;
-                m[i] -= (b[i][j]*m[j]);
+                m[1][i] -= (b[i][j]*m[0][j]);
             }
-            m[i] /= b[i][i];
+            m[1][i] /= b[i][i];
+            cout<<m[1][i]<<" ";
         }
-        for(int i=0; i<n; ++i) cout<<m[i]<<" ";
+        for(int i=0; i<n; ++i) m[0][i] = m[1][i];
         cout<<endl;
     }
     return 0;

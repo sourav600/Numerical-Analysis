@@ -25,7 +25,7 @@ int main(){
 
     //Make difference Table
     for(int i=1; i<n; ++i){
-        for(int j=i; j<=n-1; ++j){
+        for(int j=i; j<n; ++j){
             fx[j][i] = fx[j][i-1] - fx[j-1][i-1];
         }
     }

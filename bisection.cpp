@@ -5,7 +5,6 @@ double func(double x){
     return (x*x*x)-(3*x)-5;
 }
 
-
 void bisection(double a, double b){
     if(func(a) * func(b) >= 0){
         cout<<"Invalid value of a, b\n";
